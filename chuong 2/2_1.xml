@@ -1,0 +1,287 @@
+I: Câu hỏi lý thuyết
+    Câu1: Hãy so sánh lập trình hướng đối tượng (OOP) với lập trình cấu trúc (POP)?
+    - Lập trình cấu trúc (POP):
+        + Chia chương trình thành các hàm, thủ tục.
+        + Dữ liệu và hàm xử lý dữ liệu tách biệt.
+        + Dữ liệu thường ở dạng toàn cục nên dễ bị thay đổi ngoài ý muốn.
+        + Khó mở rộng khi chương trình lớn.
+    - Lập trình hướng đối tượng (OOP):
+        + Chia chương trình thành các đối tượng.
+        + Dữ liệu (thuộc tính) và hàm (phương thức) được đóng gói trong đối tượng.
+        + Có các đặc tính: đóng gói, kế thừa, đa hình, trừu tượng.
+        + Dễ mở rộng, dễ bảo trì và tái sử dụng mã nguồn.
+    Câu2: Tính chất đặc thù của lập trình hướng đối tượng?
+    - OOP có 4 tính chất chính:
+        + Đóng gói (Encapsulation): Gói dữ liệu và phương thức trong cùng một lớp.
+        + Kế thừa (Inheritance): Lớp con có thể thừa hưởng thuộc tính và phương thức từ lớp cha.
+        + Đa hình (Polymorphism): Một phương thức có thể hoạt động theo nhiều cách khác nhau.
+        + Trừu tượng (Abstraction): Chỉ quan tâm đến đặc điểm cần thiết, che giấu chi tiết cài đặt.
+    Câu3: Tính đóng gói trong lập trình hướng đối tượng có đặc trưng gì?
+    - Che giấu thông tin bên trong đối tượng, chỉ cho phép truy cập qua các phương thức công khai (public).
+    - Bảo vệ dữ liệu khỏi bị thay đổi trực tiếp.
+    - Giúp tăng tính bảo mật, dễ kiểm soát luồng dữ liệu.
+    Câu4: Hãy nêu các loại kế thừa trong lập trình hướng đối tượng?z
+    - Các loại kế thừa phổ biến:
+        + Kế thừa đơn (Single Inheritance): Một lớp con kế thừa từ một lớp cha.
+        + Kế thừa đa cấp (Multilevel Inheritance): Lớp A → Lớp B → Lớp C.
+        + Kế thừa phân cấp (Hierarchical Inheritance): Nhiều lớp con kế thừa từ cùng một lớp cha.
+        + Kế thừa đa kế thừa (Multiple Inheritance): Một lớp con kế thừa từ nhiều lớp cha (một số ngôn ngữ như Java không hỗ trợ trực tiếp, nhưng Python có).
+    Câu5: Đa hình là gì?
+    - Đa hình (Polymorphism) nghĩa là một phương thức, hành động có thể có nhiều cách thực hiện khác nhau.
+    - Hai dạng đa hình phổ biến:
+        + Nạp chồng (Overloading): Cùng tên hàm nhưng khác tham số.
+        + Ghi đè (Overriding): Lớp con định nghĩa lại phương thức đã có ở lớp cha.
+    Câu6: Khái niệm lớp trừu tượng?
+    - Lớp trừu tượng (Abstract Class) là lớp không thể tạo đối tượng trực tiếp.
+    - Nó thường chứa phương thức trừu tượng (chỉ khai báo mà không cài đặt).
+    - Dùng để xây dựng khuôn mẫu chung cho các lớp con kế thừa.
+II- BÀI TẬP SGK:
+Câu 1: Viết một lớp biểu diễn hình chữ nhật với các thuộc tính là độ dài hai cạnh và có các phương thức: Nhập dữ liệu hai cạnh cho hình chữ nhật; Tính chu vi hình chữ nhật; Tính diện tích hình chữ nhật; In thông tin hình chữ nhật (gồm độ dài hai cạnh, chu vi, diện tích) ra màn hình. Trên cơ sở lớp trên viết chương trình cho phép người dùng nhập dữ liệu của một hình chữ nhật, sau đó in thông tin của nó ra màn hình.
+class HINH_CHU_NHAT:
+    def __init__(self,chieu_dai = 0, chieu_rong = 0):
+        self.chieu_dai = chieu_dai
+        self.chieu_rong = chieu_rong
+    def nhap_du_lieu(self):
+        self.chieu_dai = float(input("Nhap chieu dai cua hinh chu nhat: "))
+        self.chieu_rong= float(input("Nhap chieu rong cua hinh chu nhat: "))
+    def tinh_dien_tich(self):
+        return self.chieu_dai*self.chieu_rong 
+    def tinh_chu_vi(self):
+        return (self.chieu_dai + self.chieu_rong)*2
+    def in_thong_tin(self):
+        print(f"Chieu dai hinh chu nhat la: {self.chieu_dai}")
+        print(f"chieu rong cua hinh chu nhat la: {self.chieu_rong}")
+        print(f"Dien tich hinh chu nhat la: {self.tinh_dien_tich()}")
+        print(f"Chu vi hinh chu nhat la: {self.tinh_chu_vi()}")
+tinh_toan = HINH_CHU_NHAT()
+tinh_toan.nhap_du_lieu()
+tinh_toan.in_thong_tin()
+BÀI 2: Để quản lý điểm thi vào một trường đại học, ta xây dựng lớp TS mô tả các thí sinh, bao gồm:
+- Các thuộc tính: Họ tên thí sinh; điểm các môn Toán, Lý, Hoá.
+- Các phương thức: Nhập thông tin thí sinh; In thông tin thí sinh; Tính tổng điểm của từng thí sinh.
+Trên cơ sở lớp trên, viết chương trình làm các công việc sau:
+- Nhập họ tên và điểm của một danh sách thí sinh.
+- Đưa ra màn hình danh sách thí sinh trúng tuyển (với giả thiết điểm chuẩn vào trường là 20) theo thứ tự điểm từ cao xuống thấp
+class TS :
+    def __init__(self,ho_ten ="",diem_toan= 0.0,diem_ly= 0.0, diem_hoa= 0.0):
+        self.ho_ten = ho_ten
+        self.diem_hoa = diem_hoa
+        self.diem_toan = diem_toan
+        self.diem_ly = diem_ly
+    def nhap_thong_tin(self):
+        self.ho_ten = str(input("Nhập họ và tên thí sinh: "))
+        self.diem_toan = float(input("Nhập điểm môn toán: "))
+        self.diem_ly = float(input("Nhập điểm môn lý: "))
+        self.diem_hoa = float(input("Nhập điểm môn hoá: "))
+    def in_thong_tin(self):
+        print(f"Họ và tên thí sinh là: {self.ho_ten}")
+        print(f"Điểm môn toán của thí sinh là: {self.diem_toan}")
+        print(f"Điểm môn lý của thí sinh là: {self.diem_ly}")
+        print(f"Điểm môn hoá của thí sinh là: {self.diem_hoa}")
+    def tinh_tong_diem(self):
+        return self.diem_toan + self.diem_ly + self.diem_hoa
+ds = []
+n = int(input("Số lượng thí sinh cần nhập là: "))
+for i in range(n):
+    print(f"Nhập thí sinh thứ {i + 1}: ")
+    do = TS()
+    do.nhap_thong_tin()
+    ds.append(do)
+ds_trung_tuyen = []
+for do in ds :
+    if do.tinh_tong_diem() >= 20:
+        ds_trung_tuyen.append(do)
+ds_trung_tuyen.sort(key=lambda ts: ts.tinh_tong_diem(), reverse= True)
+for do in ds_trung_tuyen:
+    do.in_thong_tin()
+
+
+Bài 3: Xây dựng lớp phân số PS gồm:
+- Các thuộc tính: tỉ số và mẫu số.
+- Các phương thức: Kiểm tra tính hợp lệ của phân số; Nhập phân số; In phân số ra
+import math
+class PS : 
+    def __init__(self, tu_so = 0, mau_so = 1):
+        self.tu_so = tu_so
+        self.mau_so = mau_so
+    def nhap_so(self) :
+        self.tu_so = int(input("Nhập tử số của bạn là: "))
+        self.mau_so  = int(input("Nhập mẫu số của bạn là: "))
+        while self.mau_so == 0 :
+            print("Mấu số ko hợp lệ")
+            self.mau_so = int(input("Nhập lại mẫu số của bạn: "))
+    def rut_gon(self):
+        ucln = math.gcd(self.tu_so, self.mau_so)
+        tu = self.tu_so // ucln
+        mau = self.mau_so // ucln
+        return tu, mau
+    def tinh_toan(self):
+        return self.tu_so / self.mau_so
+    def in_so(self):
+        print(f"Phân số của bạn là : {self.tu_so} / {self.mau_so}")
+        tu, mau = self.rut_gon()
+        print(f"Phân số sau khi rút gọn là:  {tu} / {mau}")
+ps = PS()
+ps.nhap_so()
+ps.in_so()
+Bài 7: Xây dựng lớp Date mô tả thông tin về ngày, tháng, năm. Lớp Date gồm:
+- Hàm tạo với ba nổi có giá trị mặc định, phương thức display để in thông tin về ngày ra màn hình và phương thức next để tính ngày tiếp theo.
+class Date :
+    def __init__(self, ngay= 1, thang= 1, nam = 1800):
+        self.ngay = ngay
+        self.thang = thang
+        self.nam = nam
+    def kiem_tra_nam(self, nam):
+        if (nam % 400 == 0) or (nam % 100 !=0 and nam % 4 == 0) :
+            return True
+        return False
+    def so_ngay(self):
+        if self.thang in [1,3,5,7,8,10,12]:
+            return 31
+        elif self.thang == 2 :
+            return 29 if self.kiem_tra_nam(self.nam) else 28
+        elif self.thang in [4, 6, 9, 11]:
+            return 30
+    def next(self):
+        self.ngay += 1
+        if self.ngay > self.so_ngay():
+            self.ngay = 1 
+            self.thang += 1 
+            if self.thang > 12 :
+                self.thang = 1 
+                self.nam += 1 
+    def display(self):
+        print(f"{self.ngay:02d}/{self.thang:02d}/{self.nam}")
+nhap = Date(27, 9, 2025)
+nhap.display()
+nhap.next()
+nhap.display()
+nhap.next()
+nhap.display()
+Bài 8: Xây dựng lớp Employee đề mô tả một nhân viên, gồm các thành phần:
+Họ tên, ngày sinh, ngày vào công ty, ... Trong đó ngày sinh và ngày vào công ty của nhân viên có kiểu Date xây dựng ở bài trên.
+Viết một chương trình để quản lý nhân viên trong công ty
+class Date:
+    def __init__(self, ngay=1, thang=1, nam=1800):
+        self.ngay = ngay
+        self.thang = thang
+        self.nam = nam
+    def kiem_tra_nam(self, nam):
+        if (nam % 400 == 0) or (nam % 100 != 0 and nam % 4 == 0):
+            return True
+        return False
+    def so_ngay(self):
+        if self.thang in [1, 3, 5, 7, 8, 10, 12]:
+            return 31
+        elif self.thang == 2:
+            return 29 if self.kiem_tra_nam(self.nam) else 28
+        else:
+            return 30
+    def display(self):
+        return f"{self.ngay:02d}/{self.thang:02d}/{self.nam}"
+class Employee:
+    def __init__(self, ho_ten, ngay_sinh, ngay_vao_cty):
+        self.ho_ten = ho_ten
+        self.ngay_sinh = ngay_sinh   
+        self.ngay_vao_cty = ngay_vao_cty  
+    def display(self):
+        print("Họ tên:", self.ho_ten)
+        print("Ngày sinh:", self.ngay_sinh.display())
+        print("Ngày vào công ty:", self.ngay_vao_cty.display())
+        print("--------------------------")
+ds_nv = []
+n = int(input("Nhập số lượng nhân viên: "))
+for i in range(n):
+    print(f"")
+    ho_ten = input("Họ tên: ")
+    ns_ngay = int(input("Ngày sinh: "))
+    ns_thang = int(input("Tháng sinh: "))
+    ns_nam = int(input("Năm sinh: "))
+    ngay_sinh = Date(ns_ngay, ns_thang, ns_nam)
+    nv_ngay = int(input("Ngày vào công ty: "))
+    nv_thang = int(input("Tháng vào công ty: "))
+    nv_nam = int(input("Năm vào công ty: "))
+    ngay_vao_cty = Date(nv_ngay, nv_thang, nv_nam)
+    nv = Employee(ho_ten, ngay_sinh, ngay_vao_cty)
+    ds_nv.append(nv)
+print("DANH SÁCH NHÂN VIÊN")
+for nv in ds_nv:
+    nv.display()
+Bài 9: Xây dựng lớp đa giác, hình bình hành kể thừa từ đa giác, hình chữ nhật kể từ hình bình hành và hình vuông thừa kế từ hình chữ nhật. Nhập vào các thuộc tính cần thiết của mỗi hình và tính chu vi, diện tích của hình đó.
+Bài 10: Xây dựng lớp điểm, lớp elip thừa kế từ lớp điểm, lớp đường tròn thừa kế từ lớp elip. Nhập vào các thuộc tính cần thiết của elip và tính diện tích.
+import math
+class Diem:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+    def display(self):
+        print(f"({self.x}, {self.y})")
+class Elip(Diem):
+    def __init__(self, x=0, y=0, a=1, b=1):
+        Diem.__init__(self, x, y)   
+        self.a = a 
+        self.b = b  
+    def dien_tich(self):
+        return math.pi * self.a * self.b
+class DuongTron(Elip):
+    def __init__(self, x=0, y=0, r=1):
+        Elip.__init__(self, x, y, r, r)   
+        self.r = r
+    def dien_tich(self):
+        return math.pi * (self.r ** 2)
+print("Nhập thông tin elip:")
+x = float(input("Tọa độ tâm x: "))
+y = float(input("Tọa độ tâm y: "))
+a = float(input("Bán trục lớn a: "))
+b = float(input("Bán trục nhỏ b: "))
+elip = Elip(x, y, a, b)
+print(f"Diện tích elip = {elip.dien_tich():.2f}")
+print("Nhập thông tin đường tròn:")
+x = float(input("Tọa độ tâm x: "))
+y = float(input("Tọa độ tâm y: "))
+r = float(input("Bán kính r: "))
+dt = DuongTron(x, y, r)
+print(f"Diện tích đường tròn = {dt.dien_tich():.2f}")
+
+Bài 11: Xây dựng lớp tam giác, lớp tam giác vuông, tam giác cần thừa kế từ lớp tam giác. Lớp tam giác đều thừa kể từ lớp tam giác cân.
+
+import math
+class TamGiac:
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+    def chu_vi(self):
+        return self.a + self.b + self.c
+    def dien_tich(self):
+        p = self.chu_vi() / 2
+        return math.sqrt(p * (p - self.a) * (p - self.b) * (p - self.c))
+class TamGiacVuong(TamGiac):
+    def __init__(self, a, b, c):
+        TamGiac.__init__(self, a, b, c)
+    def la_tam_giac_vuong(self):
+        canh = sorted([self.a, self.b, self.c])
+        return math.isclose(canh[0]**2 + canh[1]**2, canh[2]**2)
+class TamGiacCan(TamGiac):
+    def __init__(self, a, b, c):
+        TamGiac.__init__(self, a, b, c)
+    def la_tam_giac_can(self):
+        return self.a == self.b or self.b == self.c or self.a == self.c
+class TamGiacDeu(TamGiacCan):
+    def __init__(self, a):
+        TamGiacCan.__init__(self, a, a, a)
+    def la_tam_giac_deu(self):
+        return self.a == self.b == self.c
+    
+tg = TamGiac(3, 4, 5)
+print("Chu vi TG:", tg.chu_vi())
+print("Diện tích TG:", round(tg.dien_tich(), 2))
+tg_vuong = TamGiacVuong(3, 4, 5)
+print("Tgiac vuông 3-4-5 có phải vuông không - ", tg_vuong.la_tam_giac_vuong())
+tg_can = TamGiacCan(5, 5, 8)
+print("Tgiac cân 5-5-8 có phải cân không - ", tg_can.la_tam_giac_can())
+tg_deu = TamGiacDeu(6)
+print("Tgiac đều cạnh 6 có phải đều không - ", tg_deu.la_tam_giac_deu())
+print("Chu vi:", tg_deu.chu_vi())
+print("Diện tích:", round(tg_deu.dien_tich(), 2))
+
